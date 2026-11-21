@@ -4,6 +4,8 @@ RunScope is a research prototype for analysing fixed, side-view treadmill-runnin
 
 > This repository contains source code and protocol documentation only. It does **not** include participant videos, raw biomechanical data, derived landmark tables, trained weights, model checkpoints, or private user recordings.
 
+The public repository intentionally does not redistribute research datasets or private media, even where a source dataset may permit redistribution under attribution. See [DATA_AND_PRIVACY.md](DATA_AND_PRIVACY.md).
+
 ## Project status
 
 - Personal, non-commercial research prototype
@@ -66,5 +68,5 @@ See [the Korean PRD](docs/PRD_RunScope_KO.md) and [the experiment rules](EXPERIM
 
 ## License
 
-Original code in this repository is released under the [MIT License](LICENSE). Dataset files and third-party software are not covered by that license. Review [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), including the AGPL/commercial licensing terms of Ultralytics when using its package or models.
+Original RunScope code in this repository is released under the [GNU Affero General Public License v3.0](LICENSE) to align conservatively with the Ultralytics AGPL dependency used by parts of the video pipeline. Dataset files, private media, model weights, and third-party software are not covered by the RunScope license. Review [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 

@@ -1,10 +1,10 @@
 # Third-party notices
 
-RunScope source code can call third-party libraries and work with separately obtained datasets. Those components retain their own licenses; the repository's MIT License does not relicense them.
+RunScope source code can call third-party libraries and work with separately obtained datasets. Those components retain their own licenses; the repository's AGPL-3.0 license does not relicense them.
 
 ## Runtime libraries
 
-- **Ultralytics** (`ultralytics`, YOLO pose): AGPL-3.0 or an Ultralytics Enterprise license, depending on use. See <https://www.ultralytics.com/license>.
+- **Ultralytics** (`ultralytics`, YOLO pose): AGPL-3.0 or an Ultralytics Enterprise license, depending on use. The RunScope public source is licensed under AGPL-3.0 as a conservative compatibility choice. No Ultralytics source or model weights are vendored here. See <https://www.ultralytics.com/license>.
 - **MediaPipe**: Apache License 2.0. See <https://github.com/google-ai-edge/mediapipe>.
 - **PyTorch**: BSD-style license. See <https://github.com/pytorch/pytorch>.
 - **scikit-learn**: BSD 3-Clause License. See <https://github.com/scikit-learn/scikit-learn>.
@@ -15,7 +15,7 @@ No third-party source code or pretrained model weights are vendored here.
 
 ## Research datasets
 
-No dataset files are redistributed. Source metadata under `data/` is provided only for attribution and reproducibility. Users must obtain data from the official provider and comply with its current license, ethics, privacy, and access terms.
+No dataset files are redistributed. Source metadata under `data/` is provided only for attribution and reproducibility. Users must obtain data from the official provider and comply with its current license, ethics, privacy, and access terms. “Open access” does not by itself replace a specific license.
 
 The Twente source metadata references Zenodo records including:
 
@@ -24,4 +24,7 @@ The Twente source metadata references Zenodo records including:
 - Processed participant files: <https://doi.org/10.5281/zenodo.7422031>
 
 Do not publish identifiable participant media or private user recordings without explicit permission.
+
+The Twente RGB record and the processed individual-subject record currently identify `CC BY 4.0` in Zenodo metadata. The main sensor record is open access but did not expose a license identifier in the metadata checked on 2026-11-21; users should confirm its current terms before use or redistribution.
+
 
