@@ -1,0 +1,31 @@
+{
+  "experiment": "twente_sample_participant_curve_v1",
+  "created_date": "2026-11-21",
+  "status": "POST_HOC_DIAGNOSTIC_AFTER_EXPANSION_RESULT",
+  "question": "Does generalization improve more from additional independent participants or from additional strides per existing participant?",
+  "fixed_evaluation_dataset": "twente_expanded_alignment_v1 approved windows and deduplicated matched strides",
+  "subjects_available": ["Subj05", "Subj06", "Subj07", "Subj08", "Subj10", "Subj12"],
+  "forbidden_data": ["Subj04", "Subj11", "test2", "test3"],
+  "outer_evaluation": "One fixed held-out participant, evaluated on all approved expanded strides for that participant.",
+  "training_participant_counts": [2, 3, 4, 5],
+  "note_on_six": "Six training participants cannot be evaluated on an independent participant because only six approved participants exist.",
+  "stride_budgets": {
+    "OLD_SCALE": "For each training participant, randomly sample the number of strides present in the original 460-stride dataset.",
+    "EXPANDED_ALL": "Use every approved expanded stride for each selected training participant."
+  },
+  "random_seeds": [20261121, 20261122, 20261123, 20261124, 20261125, 20261126, 20261127, 20261128, 20261129, 20261130],
+  "model": "StandardScaler plus subject-balanced multi-output Ridge",
+  "alpha_candidates": [0.1, 1.0, 10.0, 100.0, 1000.0],
+  "alpha_selection": "Nested subject-disjoint LOSO using training participants only; highest inner mean Macro F1, ties choose larger alpha.",
+  "metrics": [
+    "four-stage Macro F1",
+    "per-stage F1",
+    "force-defined landing timing MAE milliseconds",
+    "force-defined landing within one native 33-fps frame",
+    "force-defined landing within two native 33-fps frames",
+    "candidate recall over all eligible force contacts in approved windows",
+    "candidate count per eligible force contact"
+  ],
+  "statistics": "Paired participant bootstrap on the six held-out participant deltas; stride-level resampling is forbidden.",
+  "attempt_ledger_entry": "Attempt after twente_expanded_alignment_v1; does not authorize replacing the frozen current model."
+}

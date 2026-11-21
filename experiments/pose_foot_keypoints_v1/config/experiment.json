@@ -1,0 +1,13 @@
+{
+  "experiment": "pose_foot_keypoints_v1",
+  "backend": "MediaPipe Pose Landmarker Full",
+  "mediapipe_version": "1.2.2",
+  "model_url": "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task",
+  "development_subjects_only": true,
+  "pilot_subject": "Subj05",
+  "pilot_trial": "run_81",
+  "clip_offset_s": 10.0,
+  "locked_test_subjects_excluded": ["Subj04", "Subj11"],
+  "minimum_visibility": 0.5,
+  "trajectory_correlation_pass": 0.9
+}

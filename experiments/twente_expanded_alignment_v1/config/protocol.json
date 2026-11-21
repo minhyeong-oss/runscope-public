@@ -1,0 +1,39 @@
+{
+  "protocol_version": "twente_expanded_alignment_v1",
+  "created_date": "2026-11-21",
+  "purpose": "Build a development-only expanded Twente training table after the full-duration synchronization audit, without touching historical test subjects.",
+  "development_subjects": ["Subj05", "Subj06", "Subj07", "Subj08", "Subj09", "Subj10", "Subj12"],
+  "forbidden_subjects": ["Subj04", "Subj11"],
+  "runs": [63, 81, 99],
+  "windows_s": [[5, 15], [15, 25], [25, 35], [35, 45], [45, 55]],
+  "window_inclusion": {
+    "minimum_marker_pose_correlation": 0.30,
+    "offset_scan_limits_ms": [-120.0, 120.0],
+    "offset_boundary_margin_ms": 2.5,
+    "rule": "Include a window only when mean absolute marker-pose correlation is at least 0.30 and its selected offset is more than 2.5 ms from either scan boundary. This rule was frozen before producing any expanded-model score."
+  },
+  "alignment": {
+    "method": "local 10-second marker-pose offset from the frozen synchronization audit",
+    "force_events_used_to_choose_offset": false,
+    "force_events_used_after_alignment": true,
+    "force_use": "Match and label gait events only after the marker-pose offset has been fixed.",
+    "force_match_tolerance_s": 0.14,
+    "valid_stride_duration_s": [0.45, 1.20]
+  },
+  "deduplication": {
+    "unit": "subject + run + side + force initial-contact event index",
+    "tie_break": "highest synchronization correlation, then smallest absolute candidate-to-force timing error"
+  },
+  "evaluation": {
+    "split": "subject-disjoint LOSO on development subjects with at least one included stride",
+    "primary": "four-stage macro F1 at 100 Hz",
+    "secondary": ["per-stage F1", "matched strides", "included windows", "participant-level results"],
+    "candidate_models": ["timing_baseline", "ridge_alpha10_subject_balanced"],
+    "historical_test_policy": "Subj04, Subj11, test2, and test3 are not read, scored, tuned, or retrained on in this experiment."
+  },
+  "interpretation_limits": [
+    "This expansion improves label alignment and sample coverage; it does not by itself prove better deployment performance.",
+    "Subj09 has no window passing the frozen synchronization gate and must not be silently included.",
+    "Stride count is not an independent-subject count; statistical reporting remains participant-level."
+  ]
+}

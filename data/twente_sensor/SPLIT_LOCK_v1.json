@@ -1,0 +1,30 @@
+{
+  "split_version": "twente_subject_disjoint_v1",
+  "locked_at_kst": "2026-11-07",
+  "split_unit": "participant",
+  "requested_ratio": "8:2",
+  "realized_ratio": "7:2 subjects (77.8%:22.2%) because the dataset has 9 participants",
+  "selection_rule": "Sort SHA-256(seed|subject_id) for previously unseen subjects; first two are test. Subj05 was already inspected and is forced into development.",
+  "seed": "RunScope-Twente-split-v1-2026-11-07",
+  "development_subjects": [
+    "Subj05",
+    "Subj06",
+    "Subj07",
+    "Subj08",
+    "Subj09",
+    "Subj10",
+    "Subj12"
+  ],
+  "test_subjects": [
+    "Subj04",
+    "Subj11"
+  ],
+  "test_isolation_rules": [
+    "Do not use test force labels, events, videos, poses, or metrics for training.",
+    "Do not use test results for hyperparameter selection, thresholds, feature selection, calibration, early stopping, or model choice.",
+    "Freeze the final model and preprocessing artifacts before opening test archives.",
+    "Run the test set once for the final locked report; any later change creates a new model version and requires a new untouched test cohort."
+  ],
+  "source_record": "https://zenodo.org/records/7422031",
+  "license": "CC BY 4.0"
+}

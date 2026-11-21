@@ -1,0 +1,8 @@
+{
+  "experiment": "hybrid_v1",
+  "components": ["boundary_regression_v1", "temporal_tcn_v1"],
+  "component_policy": "read-only references; no overwrite",
+  "meta_validation": "leave-one-subject-out selection on base-model OOF predictions",
+  "forbidden_subjects": ["Subj04", "Subj11"],
+  "random_seed": 20261107
+}

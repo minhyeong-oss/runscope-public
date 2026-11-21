@@ -1,0 +1,58 @@
+{
+  "experiment": "landing_failure_audit_v1",
+  "locked_date_kst": "2026-11-18",
+  "status": "RETROSPECTIVE_AUDIT_RULES_LOCKED_BEFORE_GENERATING_THIS_AUDIT",
+  "scope_note": "Existing aggregate metrics were known before this audit. These rules are retrospective for current artifacts and prospective for synthetic-data comparisons.",
+  "target": "force-platform initial contact for each foot",
+  "denominator": {
+    "unit": "force-defined same-foot stride",
+    "rule": "Initial contact and next same-foot contact must both lie inside synchronized video coverage, with force stride duration from 0.45 through 1.20 seconds.",
+    "include_zero_match_trials": true
+  },
+  "primary_cause_priority": [
+    "POSE_MISS",
+    "FOOT_SWAP",
+    "SYNC_LOW",
+    "STRIDE_MISS",
+    "MODEL_ERROR",
+    "PASS"
+  ],
+  "cause_rules": {
+    "POSE_MISS": "Within plus/minus two video frames of force initial contact, pose_detected fraction is below 0.60 or mean tracked heel/toe visibility is below 0.50.",
+    "FOOT_SWAP": "No valid same-side stride candidate starts within 0.14 seconds of force initial contact, while an opposite-side candidate does.",
+    "SYNC_LOW": "Trial-level absolute marker-to-video synchronization correlation is below 0.30.",
+    "STRIDE_MISS": "No valid same-side stride candidate with a frozen-model prediction starts within 0.14 seconds of force initial contact.",
+    "MODEL_ERROR": "A prediction exists but absolute onset error exceeds 30 milliseconds.",
+    "PASS": "A prediction exists and absolute onset error is at most 30 milliseconds."
+  },
+  "fixed_thresholds": {
+    "pose_window_frames_each_side": 2,
+    "pose_detected_fraction_min": 0.60,
+    "tracked_foot_visibility_min": 0.50,
+    "candidate_force_match_tolerance_s": 0.14,
+    "sync_correlation_low_threshold": 0.30,
+    "valid_stride_duration_s": [0.45, 1.20],
+    "landing_success_tolerance_ms": 30.0
+  },
+  "success_criteria_for_future_comparison": {
+    "landing_force_defined_f1_min": 0.68,
+    "development_subjects_improved_min": 5,
+    "four_stage_macro_f1_noninferiority_floor": 0.705,
+    "four_stage_macro_f1_reference": 0.725,
+    "stride_coverage_must_not_decline": true,
+    "statistical_reporting": "Report per-subject paired differences, effect size, and exhaustive paired sign-flip permutation p-value. Five of seven improved is a practical consistency gate, not a significance claim."
+  },
+  "comparison_groups_for_future_synthetic_experiment": [
+    "Twente-only",
+    "clean synthetic pretraining then Twente fine-tuning",
+    "BioCV-noise synthetic pretraining then Twente fine-tuning",
+    "synthetic and Twente mixed training"
+  ],
+  "leakage_rules": [
+    "Fit BioCV-derived noise distributions independently inside every Twente LOSO training fold.",
+    "Never use the held-out Twente participant to set a noise distribution, threshold, feature, or checkpoint.",
+    "Never train, tune, or select with test2.MOV or test3.MOV.",
+    "Keep force-defined and visually annotated Landing F1 in separate result tables.",
+    "Report a null or negative synthetic-transfer result without changing the success criteria."
+  ]
+}

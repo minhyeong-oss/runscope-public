@@ -1,0 +1,12 @@
+{
+  "experiment": "twente_expanded_weighting_ablation_v1",
+  "created_date": "2026-11-21",
+  "status": "POST_HOC_DIAGNOSTIC_NOT_MODEL_SELECTION",
+  "question": "Did subject-balanced sample weighting, rather than the expanded labels themselves, cause the Subj05 LOSO degradation?",
+  "fixed_dataset": "../twente_expanded_alignment_v1/artifacts/expanded_development_matched_strides.csv",
+  "only_changed_factor": "Ridge sample weighting",
+  "variants": ["ridge_alpha10_unweighted", "ridge_alpha10_subject_balanced"],
+  "split": "same subject-disjoint LOSO",
+  "forbidden_data": ["Subj04", "Subj11", "test2", "test3"],
+  "interpretation": "Exploratory ablation created after observing the expanded weighted result. It cannot be used as preregistered model-selection evidence."
+}

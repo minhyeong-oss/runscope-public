@@ -1,0 +1,11 @@
+{
+  "experiment": "boundary_regression_v1",
+  "purpose": "Correct video-derived four-stage boundaries using MediaPipe foot trajectories",
+  "clip_start_s": 10.0,
+  "clip_end_s": 22.0,
+  "development_subjects": ["Subj05", "Subj06", "Subj07", "Subj08", "Subj09", "Subj10", "Subj12"],
+  "forbidden_subjects": ["Subj04", "Subj11"],
+  "runs": [63, 81, 99],
+  "model_selection": "development-only leave-one-subject-out macro F1",
+  "random_seed": 20261107
+}

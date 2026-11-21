@@ -1,0 +1,44 @@
+{
+  "experiment": "landing_event_v3",
+  "stage": "PREPARATION_ONLY_NO_MODEL_TRAINING",
+  "target": "force-platform initial-contact onset for each tracked foot",
+  "primary_training_source": "Twente development pose-force synchronized sequences",
+  "auxiliary_pretraining_source": "landing_visual_contact_v2 kinematic visual-contact model",
+  "sequence_length": 64,
+  "sequence_duration_s": 0.48,
+  "soft_target_sigma_ms": 15.0,
+  "landing_display_window_ms": 30.0,
+  "event_evaluation_tolerances_ms": [15.0, 30.0, 60.0],
+  "primary_metric": "subject-disjoint event F1 at +/-60 ms",
+  "secondary_metrics": [
+    "event F1 at +/-30 ms",
+    "matched onset MAE in ms",
+    "false positive events per stride",
+    "four-stage Macro F1 after frozen integration"
+  ],
+  "quality_tiers": {
+    "high": "sync_correlation >= 0.70",
+    "medium": "0.30 <= sync_correlation < 0.70",
+    "low": "sync_correlation < 0.30"
+  },
+  "candidate_training_sets": [
+    "high-quality force labels only",
+    "all development labels with synchronization-quality weighting"
+  ],
+  "split_policy": {
+    "development_subjects": ["Subj05", "Subj06", "Subj07", "Subj08", "Subj09", "Subj10", "Subj12"],
+    "forbidden_historical_test_subjects": ["Subj04", "Subj11"],
+    "development_validation": "leave-one-subject-out; threshold selection inside each training fold",
+    "new_final_test_required": true
+  },
+  "external_video_exclusions": [
+    "private_inputs/test2.MOV",
+    "private_inputs/test3.MOV"
+  ],
+  "leakage_rules": [
+    "Never train, tune, or select thresholds with test2.MOV or test3.MOV.",
+    "Never use Subj04 or Subj11 labels for v3 model selection.",
+    "Do not report visual-contact pseudo labels as force-contact F1.",
+    "Freeze preprocessing, model, and decoder before any new final test."
+  ]
+}

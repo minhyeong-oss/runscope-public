@@ -1,0 +1,61 @@
+{
+  "experiment": "twente_full_duration_sync_audit_v1",
+  "locked_date_kst": "2026-11-21",
+  "status": "LOCKED_BEFORE_FULL_AUDIT",
+  "purpose": "Check video-marker offset stability before expanding Twente clips from 12 seconds to full-duration development data.",
+  "development_subjects": [
+    "Subj05",
+    "Subj06",
+    "Subj07",
+    "Subj08",
+    "Subj09",
+    "Subj10",
+    "Subj12"
+  ],
+  "forbidden_subjects": ["Subj04", "Subj11"],
+  "forbidden_external_videos": ["test2", "test3"],
+  "runs": [63, 81, 99],
+  "windows_s": [[5, 15], [15, 25], [25, 35], [35, 45], [45, 55]],
+  "pose_backend": "MediaPipe Pose Landmarker Full, 33 landmarks, VIDEO mode",
+  "pose_thresholds": {
+    "min_pose_detection_confidence": 0.5,
+    "min_pose_presence_confidence": 0.5,
+    "min_tracking_confidence": 0.5,
+    "num_poses": 1
+  },
+  "synchronization": {
+    "signals": ["left_heel", "right_heel", "left_foot_index", "right_foot_index"],
+    "marker_pairs": {
+      "left_heel": ["LCAL"],
+      "right_heel": ["RCAL"],
+      "left_foot_index": ["L1MT", "L5MT"],
+      "right_foot_index": ["R1MT", "R5MT"]
+    },
+    "uses_force_events": false,
+    "offset_search_ms": [-120, 120],
+    "offset_step_ms": 0.5,
+    "correlation": "mean absolute Pearson correlation across available pose-marker signals"
+  },
+  "fixed_audit_thresholds": {
+    "low_correlation": 0.3,
+    "constant_offset_range_ms_max": 15.0,
+    "linear_drift_r2_min": 0.8,
+    "linear_drift_rmse_ms_max": 5.0,
+    "offset_scan_boundary_margin_ms": 1.0
+  },
+  "trial_classification_priority": [
+    "INCOMPLETE_WINDOWS",
+    "OFFSET_SCAN_BOUNDARY",
+    "LOW_CORRELATION",
+    "STABLE_CONSTANT",
+    "POSSIBLE_LINEAR_DRIFT",
+    "NONLINEAR_OR_NOISY"
+  ],
+  "full_duration_expansion_gate": "Only STABLE_CONSTANT trials may use one fixed offset. POSSIBLE_LINEAR_DRIFT trials require a separately frozen linear correction. Other classes are not admitted automatically.",
+  "prohibitions": [
+    "Do not use force initial-contact times to choose synchronization offsets.",
+    "Do not tune thresholds after inspecting forbidden subjects or external videos.",
+    "Do not overwrite prior 10-22 second artifacts or reports.",
+    "Do not interpret this audit as model-performance improvement."
+  ]
+}

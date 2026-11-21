@@ -1,0 +1,11 @@
+{
+  "experiment": "temporal_tcn_v1",
+  "sequence_length": 64,
+  "pre_contact_window_s": 0.12,
+  "input": "normalized MediaPipe pose trajectories",
+  "output": "four-stage frame labels",
+  "development_subjects": ["Subj05", "Subj06", "Subj07", "Subj08", "Subj09", "Subj10", "Subj12"],
+  "forbidden_subjects": ["Subj04", "Subj11"],
+  "validation": "leave-one-subject-out",
+  "random_seed": 20261107
+}

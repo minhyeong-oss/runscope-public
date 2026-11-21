@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "reviewed_on": "2026-11-14",
+  "disclaimer_ko": "측면 2D 영상 기반 운동 스크리닝이며 의료 진단이나 부상 위험 예측이 아닙니다.",
+  "evidence": [
+    {
+      "id": "souza_2016",
+      "title": "An Evidence-Based Videotaped Running Biomechanics Analysis",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4714754/",
+      "doi": "10.1016/j.pmr.2015.08.006",
+      "use": "phase-specific sagittal video measures, tibia position, peak stance knee flexion, overstride limitations"
+    },
+    {
+      "id": "heiderscheit_2011",
+      "title": "Effects of step rate manipulation on joint mechanics during running",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20581720/",
+      "doi": "10.1249/MSS.0b013e3181ebedf4",
+      "use": "step-rate changes and lower-extremity loading; cadence is not a universal target"
+    },
+    {
+      "id": "tripodi_2024",
+      "title": "Running retraining to treat lower limb injuries: a mixed-methods masterclass",
+      "url": "https://vuir.vu.edu.au/48172/1/1-s2.0-S1746068923000421-main.pdf",
+      "use": "lateral filming protocol, individualized cues, and 2D limitations"
+    }
+  ],
+  "remediation": {
+    "landing_tibia_alignment": [
+      {
+        "title": "Overstriding While Running | How to Fix Your Stride",
+        "channel": "Learn2Run",
+        "presenter": "Dr. Matt Minard, DPT",
+        "url": "https://www.youtube.com/watch?v=vLh2nCNMtPA",
+        "why_selected": "물리치료사가 오버스트라이드와 보폭 교정 단서를 설명하는 검토된 교육 영상"
+      },
+      {
+        "title": "Running Video Analysis",
+        "channel": "Mayo Clinic Health System",
+        "url": "https://www.youtube.com/watch?v=FHn_t8NPBhg",
+        "why_selected": "의료기관의 일반적인 러닝 영상 분석 설명"
+      }
+    ],
+    "limited_stance_knee_flexion": [
+      {
+        "title": "Overstriding While Running | How to Fix Your Stride",
+        "channel": "Learn2Run",
+        "presenter": "Dr. Matt Minard, DPT",
+        "url": "https://www.youtube.com/watch?v=vLh2nCNMtPA",
+        "why_selected": "물리치료사가 오버스트라이드와 보폭 교정 단서를 설명하는 검토된 교육 영상"
+      },
+      {
+        "title": "Running Video Analysis",
+        "channel": "Mayo Clinic Health System",
+        "url": "https://www.youtube.com/watch?v=FHn_t8NPBhg",
+        "why_selected": "의료기관의 일반적인 러닝 영상 분석 설명"
+      }
+    ],
+    "hip_extension_context": [
+      {
+        "title": "Fix Your Hip Extension for Powerful, Pain-Free Running",
+        "channel": "Abby Siler, DPT",
+        "url": "https://www.youtube.com/watch?v=WultjCxEsHc",
+        "why_selected": "고관절 신전 관련 교육 자료; v1 자동 판정에는 직접 연결하지 않음"
+      }
+    ]
+  }
+}

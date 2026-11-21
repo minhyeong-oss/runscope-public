@@ -1,0 +1,14 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+opencv-python
+mediapipe
+ultralytics
+torch
+joblib
+h5py
+ezc3d
+Pillow
+
